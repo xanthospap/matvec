@@ -58,6 +58,11 @@ struct Vector3 {
     data[2] /= norm;
   }
 
+  /// @brief Unary minus operator (e.g. Vector3 a = -b;)
+  constexpr Vector3 operator-() const noexcept {
+    return Vector3({-data[0], -data[1], -data[2]});
+  }
+
   constexpr Vector3 operator-(const Vector3 &v) const noexcept {
     return {{data[0] - v.data[0], data[1] - v.data[1], data[2] - v.data[2]}};
   }

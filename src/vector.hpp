@@ -37,6 +37,13 @@ struct Vector {
   double operator()(int i) const noexcept { return _vec[i]; }
   double operator()(int i) noexcept { return _vec[i]; }
 
+  /// @brief Unary minus operator (e.g. Vector a = -b;)
+  constexpr Vector operator-() const noexcept {
+    Vector neg(*this);
+    std::for_each(_vec.begin(), _vec.end(), [](double &d)noexcept{d=-d;});
+    return neg;
+  }
+
   void append(const Vector &other) noexcept {
     _vec.reserve(_vec.size() + other._vec.size());
     _vec.insert(std::end(_vec), std::begin(other._vec), std::end(other._vec));
