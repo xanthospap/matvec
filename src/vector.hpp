@@ -5,6 +5,7 @@
 #include <algorithm>
 #include <vector>
 #include <numeric>
+#include "vector3d.hpp"
 #ifdef INCLUDE_EIGEN
 #include "Eigen/Dense"
 #endif
@@ -60,6 +61,10 @@ struct Vector {
     return Eigen::VectorXcd::Map(_vec.data(), _vec.size());
   }
 #endif
+
+  explicit operator Vector3() const noexcept {
+    return Vector3({_vec[0], _vec[1], _vec[2]});
+  }
 
 }; // Vector
 
