@@ -1,11 +1,15 @@
 # Prerequisites
 *.d
 
+# scons
+.sconsign.dblite
+
 # Compiled Object files
 *.slo
 *.lo
 *.o
 *.obj
+*.os
 
 # Precompiled Headers
 *.gch
