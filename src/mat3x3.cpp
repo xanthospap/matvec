@@ -129,7 +129,7 @@ dso::Mat3x3 dso::Mat3x3::operator*(const dso::Mat3x3 &b) const noexcept {
   return c;
 }
 
-dso::Mat3x3& dso::Mat3x3::transpose_inplace() noexcept {
+dso::Mat3x3 &dso::Mat3x3::transpose_inplace() noexcept {
   const double c10 = data[1];
   const double c20 = data[2];
   const double c01 = data[3];

@@ -22,7 +22,7 @@ struct Vector {
   Vector(const Vector &other) noexcept : _vec{other._vec} {};
   Vector(Vector &&other) noexcept : _vec{std::move(other._vec)} {};
   Vector &operator=(const Vector &other) noexcept {
-    if (other != *this)
+    if (&other != this)
       _vec = other._vec;
     return *this;
   }
