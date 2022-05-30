@@ -1,11 +1,11 @@
 #ifndef __VECTOR_SIMPLE_HPP__
 #define __VECTOR_SIMPLE_HPP__
 
-#include <cmath>
-#include <algorithm>
-#include <vector>
-#include <numeric>
 #include "vector3d.hpp"
+#include <algorithm>
+#include <cmath>
+#include <numeric>
+#include <vector>
 #ifdef INCLUDE_EIGEN
 #include "Eigen/Dense"
 #endif
@@ -40,7 +40,8 @@ struct Vector {
   /// @brief Unary minus operator (e.g. Vector a = -b;)
   Vector operator-() const noexcept {
     Vector neg(*this);
-    std::for_each(_vec.begin(), _vec.end(), [](double &d)noexcept{d=-d;});
+    std::for_each(neg._vec.begin(), neg._vec.end(),
+                  [](double &d) noexcept { d = -d; });
     return neg;
   }
 
@@ -59,11 +60,10 @@ struct Vector {
   }
 
 #ifdef INCLUDE_EIGEN
-  template<int N>
-  Eigen::Matrix<double, N, 1> to_eigen() const noexcept {
+  template <int N> Eigen::Matrix<double, N, 1> to_eigen() const noexcept {
     return Eigen::Matrix<double, N, 1>::Map(_vec.data(), N);
   }
-  
+
   Eigen::VectorXcd to_eigen() const noexcept {
     return Eigen::VectorXcd::Map(_vec.data(), _vec.size());
   }
@@ -75,6 +75,6 @@ struct Vector {
 
 }; // Vector
 
-} // dso
+} // namespace dso
 
 #endif
