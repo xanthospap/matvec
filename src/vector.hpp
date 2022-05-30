@@ -38,7 +38,7 @@ struct Vector {
   double operator()(int i) noexcept { return _vec[i]; }
 
   /// @brief Unary minus operator (e.g. Vector a = -b;)
-  constexpr Vector operator-() const noexcept {
+  Vector operator-() const noexcept {
     Vector neg(*this);
     std::for_each(_vec.begin(), _vec.end(), [](double &d)noexcept{d=-d;});
     return neg;
