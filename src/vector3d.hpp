@@ -8,12 +8,15 @@ namespace dso {
 
 struct Vector3 {
   double data[3] = {0e0, 0e0, 0e0};
-  constexpr const double &x() const noexcept { return data[0]; }
-  constexpr const double &y() const noexcept { return data[1]; }
-  constexpr const double &z() const noexcept { return data[2]; }
+  constexpr double x() const noexcept { return data[0]; }
+  constexpr double y() const noexcept { return data[1]; }
+  constexpr double z() const noexcept { return data[2]; }
   constexpr double &x() noexcept { return data[0]; }
   constexpr double &y() noexcept { return data[1]; }
   constexpr double &z() noexcept { return data[2]; }
+
+  constexpr double operator()(int i) const noexcept {return data[i];}
+  constexpr double &operator()(int i) noexcept {return data[i];}
 
   static constexpr Vector3 to_vec3(const double *vec) noexcept {
     return Vector3{{vec[0], vec[1], vec[2]}};
