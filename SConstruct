@@ -103,6 +103,5 @@ env.Alias(target='install', source=env.InstallVersionedLib(dir=os.path.join(pref
 tests_sources = glob.glob(r"test/*.cpp")
 env.Append(RPATH=root_dir)
 for tsource in tests_sources:
-  if tsource not in ignore_test_list:
     ttarget = tsource.replace('_', '-').replace('.cpp', '.out')
     env.Program(target=ttarget, source=tsource, CPPPATH='src/', LIBS=vlib+[], LIBPATH='.')
