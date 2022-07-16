@@ -55,13 +55,13 @@ void dso::Mat3x3::roty(double phi) noexcept {
   return;
 }
 
-void dso::Mat3x3::rotz(double phi) noexcept {
+dso::Mat3x3 &dso::Mat3x3::rotz(double phi) noexcept {
   const double s = std::sin(phi);
   const double c = std::cos(phi);
 
-  const double a00 = c * data[0] + s * data[3];
-  const double a01 = c * data[1] + s * data[4];
-  const double a02 = c * data[2] + s * data[5];
+  const double a00 =  c * data[0] + s * data[3];
+  const double a01 =  c * data[1] + s * data[4];
+  const double a02 =  c * data[2] + s * data[5];
   const double a10 = -s * data[0] + c * data[3];
   const double a11 = -s * data[1] + c * data[4];
   const double a12 = -s * data[2] + c * data[5];
@@ -73,7 +73,7 @@ void dso::Mat3x3::rotz(double phi) noexcept {
   data[4] = a11;
   data[5] = a12;
 
-  return;
+  return *this;
 }
 
 void dso::Mat3x3::mult_inplace(const dso::Mat3x3 &b) noexcept {

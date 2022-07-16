@@ -10,6 +10,10 @@ namespace dso {
 struct Mat3x3 {
   double data[9] = {1e0, 0e0, 0e0, 0e0, 1e0, 0e0, 0e0, 0e0, 1e0};
 
+  static Mat3x3 identity() noexcept {
+    return Mat3x3({1e0, 0e0, 0e0, 0e0, 1e0, 0e0, 0e0, 0e0, 1e0});
+  }
+
   constexpr double &operator()(int i, int j) noexcept {
     return data[i * 3 + j];
   }
@@ -54,20 +58,20 @@ struct Mat3x3 {
   void rotx(double angle) noexcept;
 
   /// @brief Rotate an r-matrix about the y-axis.
-  /// This will actually perform the operation R = Ry * R, with Rx =
+  /// This will actually perform the operation R = Ry * R, with Ry =
   ///  + cos(phi)     0      - sin(phi)
-  ///       0           1           0
+  ///       0         1           0
   ///  + sin(phi)     0      + cos(phi)
   /// @param[in] angle (radians)
   void roty(double) noexcept;
 
   /// @brief Rotate an r-matrix about the z-axis.
-  /// This will actually perform the operation R = Rz * R, with Rx =
+  /// This will actually perform the operation R = Rz * R, with Rz =
   ///  + cos(psi)   + sin(psi)     0
   ///  - sin(psi)   + cos(psi)     0
   ///       0            0         1
   /// @param[in] angle (radians)
-  void rotz(double) noexcept;
+  Mat3x3 &rotz(double) noexcept;
 }; // Mat3x3
 } // dso
 
