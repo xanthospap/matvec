@@ -10,8 +10,14 @@ namespace dso {
 struct Mat3x3 {
   double data[9] = {1e0, 0e0, 0e0, 0e0, 1e0, 0e0, 0e0, 0e0, 1e0};
 
-  static Mat3x3 identity() noexcept {
+  constexpr static Mat3x3 identity() noexcept {
     return Mat3x3({1e0, 0e0, 0e0, 0e0, 1e0, 0e0, 0e0, 0e0, 1e0});
+  }
+
+  static Mat3x3 RotZ(double angle) noexcept {
+    const double s = std::sin(angle);
+    const double c = std::cos(angle);
+    return Mat3x3({+c, +s, 0e0, -s, +c, 0e0, 0e0, 0e0, 1e0});
   }
 
   constexpr double &operator()(int i, int j) noexcept {
