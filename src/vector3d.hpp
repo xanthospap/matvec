@@ -8,6 +8,11 @@ namespace dso {
 
 struct Vector3 {
   double data[3] = {0e0, 0e0, 0e0};
+  
+  static constexpr Vector3 ptr2vec(const double *ptr) noexcept {
+    return Vector3{*ptr, *(ptr+1), *(ptr+2)};
+  }
+
   constexpr double x() const noexcept { return data[0]; }
   constexpr double y() const noexcept { return data[1]; }
   constexpr double z() const noexcept { return data[2]; }
